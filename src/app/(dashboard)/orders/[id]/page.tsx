@@ -2,9 +2,14 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PageHeader } from '@/components/shared/page-header'
 import { Button } from '@/components/ui/button'
-import { getOrder } from '@/services/order.service'
+import { getOrder, getOrders } from '@/services/order.service'
 import { OrderDetailsView } from '@/features/orders/components/order-details-view'
 import { ArrowLeft } from 'lucide-react'
+
+export async function generateStaticParams() {
+  const orders = await getOrders()
+  return orders.map((order) => ({ id: order.id }))
+}
 
 interface OrderPageProps {
   params: Promise<{ id: string }>

@@ -5,10 +5,15 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { getProduct } from '@/services/product.service'
+import { getProduct, getProducts } from '@/services/product.service'
 import { productStatusMap } from '@/constants/status-maps'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import { ArrowLeft, Pencil } from 'lucide-react'
+
+export async function generateStaticParams() {
+  const products = await getProducts()
+  return products.map((product) => ({ id: product.id }))
+}
 
 interface ProductPageProps {
   params: Promise<{ id: string }>
