@@ -1,7 +1,4 @@
-"use client"
-
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { Link, useLocation } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { useSidebarStore } from '@/stores/sidebar-store'
@@ -66,7 +63,7 @@ function CollapsedSubmenu({ item, pathname, isGroupActive }: {
           {item.children?.map((child) => (
             <Link
               key={child.href}
-              href={child.href}
+              to={child.href}
               {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               onClick={() => setOpen(false)}
               className={cn(
@@ -124,7 +121,7 @@ function NavItemComponent({ item, isCollapsed, pathname }: {
             {item.children.map((child) => (
               <Link
                 key={child.href}
-                href={child.href}
+                to={child.href}
                 {...(child.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className={cn(
                   'flex items-center rounded-lg px-3 py-1.5 text-sm transition-colors',
@@ -157,7 +154,7 @@ function NavItemComponent({ item, isCollapsed, pathname }: {
     return (
       <Tooltip>
         <TooltipTrigger
-          render={<Link href={item.href} {...externalProps} className={linkClassName} />}
+          render={<Link to={item.href} {...externalProps} className={linkClassName} />}
         >
           <item.icon className="h-4 w-4 shrink-0" />
         </TooltipTrigger>
@@ -167,7 +164,7 @@ function NavItemComponent({ item, isCollapsed, pathname }: {
   }
 
   return (
-    <Link href={item.href} {...externalProps} className={linkClassName}>
+    <Link to={item.href} {...externalProps} className={linkClassName}>
       <item.icon className="h-4 w-4 shrink-0" />
       <span>{item.label}</span>
       {item.external && <ExternalLink className="ml-auto h-3 w-3 text-sidebar-foreground/40" />}
@@ -176,7 +173,7 @@ function NavItemComponent({ item, isCollapsed, pathname }: {
 }
 
 function SidebarContent({ isCollapsed, onToggle }: { isCollapsed: boolean; onToggle?: () => void }) {
-  const pathname = usePathname()
+  const { pathname } = useLocation()
   const { user } = useAuthStore()
 
   const initials = user?.name
@@ -222,7 +219,7 @@ function SidebarContent({ isCollapsed, onToggle }: { isCollapsed: boolean; onTog
       <div className="min-h-0 flex-1 overflow-y-auto px-3 py-2">
         <TooltipProvider delay={0}>
           <nav className="space-y-4">
-            {navigation.map((group) => (
+            {navigation.map((group: NavGroup) => (
               <div key={group.label}>
                 {!isCollapsed && (
                   <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-sidebar-foreground/50">

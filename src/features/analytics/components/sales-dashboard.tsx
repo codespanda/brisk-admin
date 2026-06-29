@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { StatCard } from '@/components/shared/stat-card'
 import { ChartCard } from '@/components/shared/chart-card'
 import { LineChart } from '@/components/charts/line-chart'

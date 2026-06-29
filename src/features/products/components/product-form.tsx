@@ -1,9 +1,7 @@
-"use client"
-
 import { useEffect } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -41,7 +39,7 @@ interface ProductFormProps {
 }
 
 export function ProductForm({ initialData, mode }: ProductFormProps) {
-  const router = useRouter()
+  const navigate = useNavigate()
 
   const methods = useForm<ProductFormData>({
     resolver: zodResolver(productSchema) as never,
@@ -96,7 +94,7 @@ export function ProductForm({ initialData, mode }: ProductFormProps) {
         await createProduct(data)
       }
       toast.success('Product saved')
-      router.push('/products')
+      navigate('/products')
     } catch {
       toast.error('Failed to save product')
     }

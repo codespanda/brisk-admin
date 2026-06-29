@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { useState } from 'react'
 import {
   type ColumnDef, type ColumnFiltersState, type SortingState,

@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import type { ColumnDef } from '@tanstack/react-table'
 import { Card, CardContent } from '@/components/ui/card'
 import { ChartCard } from '@/components/shared/chart-card'

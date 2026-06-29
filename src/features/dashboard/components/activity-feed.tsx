@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { ChevronRight } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 
 const activities = [
   { name: 'Jane Cooper', action: 'Purchased', product: 'Cotton T-Shirt', time: '2m ago', initials: 'JC' },
@@ -17,7 +17,7 @@ export function ActivityFeed() {
     <Card className="col-span-1 lg:col-span-2">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-base font-semibold">Activity</CardTitle>
-        <Link href="/orders">
+        <Link to="/orders">
           <Button variant="outline" size="sm" className="gap-1 text-xs">
             View all <ChevronRight className="h-3 w-3" />
           </Button>

@@ -4,7 +4,7 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { orderStatusMap } from '@/constants/status-maps'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 import type { Order } from '@/types'
 
 interface RecentOrdersProps {
@@ -16,7 +16,7 @@ export function RecentOrders({ orders }: RecentOrdersProps) {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-base font-semibold">Recent Orders</CardTitle>
-        <Link href="/orders">
+        <Link to="/orders">
           <Button variant="outline" size="sm">View all</Button>
         </Link>
       </CardHeader>
@@ -37,7 +37,7 @@ export function RecentOrders({ orders }: RecentOrdersProps) {
               return (
                 <TableRow key={order.id}>
                   <TableCell className="font-medium">
-                    <Link href={`/orders/${order.id}`} className="hover:underline">
+                    <Link to={`/orders/${order.id}`} className="hover:underline">
                       {order.orderNumber}
                     </Link>
                   </TableCell>

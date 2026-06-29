@@ -1,8 +1,6 @@
-"use client"
-
 import { useForm, FormProvider, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -48,7 +46,7 @@ interface DiscountFormProps {
 }
 
 export function DiscountForm({ initialData, mode }: DiscountFormProps) {
-  const router = useRouter()
+  const navigate = useNavigate()
 
   const methods = useForm<DiscountSchemaData>({
     resolver: zodResolver(discountSchema),
@@ -105,7 +103,7 @@ export function DiscountForm({ initialData, mode }: DiscountFormProps) {
         await createDiscount(payload)
       }
       toast.success(mode === 'create' ? 'Discount created' : 'Discount saved')
-      router.push('/discounts')
+      navigate('/discounts')
     } catch {
       toast.error('Failed to save discount')
     }

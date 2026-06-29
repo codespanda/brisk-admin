@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import type { ColumnDef } from '@tanstack/react-table'

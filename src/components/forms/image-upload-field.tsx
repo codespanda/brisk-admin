@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { useCallback, useRef, useState } from 'react'
 import { Upload, X, ImageIcon } from 'lucide-react'
 import { Label } from '@/components/ui/label'

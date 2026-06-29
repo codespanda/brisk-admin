@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { useFormContext, Controller } from 'react-hook-form'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'

@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Brisk Admin
+
+A modern e-commerce admin dashboard built with React, Vite, TypeScript, and Tailwind CSS v4.
+
+## Tech Stack
+
+- **React 19** + **TypeScript 5**
+- **Vite 6** — build tool & dev server
+- **React Router DOM v7** — client-side routing (HashRouter for GitHub Pages)
+- **Tailwind CSS v4** — utility-first styling with OkLCH color system
+- **shadcn/ui** — accessible component primitives
+- **Zustand** — state management
+- **React Hook Form** + **Zod** — form handling and validation
+- **Recharts** — data visualization
+- **TanStack Table** — powerful data tables
+- **next-themes** — dark/light mode
+- **Sonner** — toast notifications
+
+## Features
+
+- Dashboard with KPI cards and charts
+- Products management (CRUD)
+- Orders management
+- Customer management
+- Inventory with warehouses and adjustments
+- Marketing (email campaigns)
+- Analytics (sales, products, customers)
+- Notifications center
+- Settings and user management
+- Auth pages (login, register, forgot/reset password, email verify)
+- Resource pages (charts showcase, forms showcase, components showcase)
+- Dark/light/system theme toggle
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev       # Start dev server
+npm run build     # Build for production
+npm run preview   # Preview production build locally
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+This project is configured for deployment to GitHub Pages via GitHub Actions. Every push to `master` triggers the workflow which builds with Vite and deploys the `dist/` folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The app uses `HashRouter` so all routes work correctly on static hosting (URLs like `/#/products`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Live: [https://codespanda.github.io/brisk-admin/](https://codespanda.github.io/brisk-admin/)

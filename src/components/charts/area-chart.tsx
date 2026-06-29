@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import {
   ResponsiveContainer, AreaChart as RechartsAreaChart,
   Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend,

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ChevronRight, Package } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from 'react-router-dom'
 
 const bestSellers = [
   { brand: 'AudioTech', name: 'Wireless Headphones', stock: 100, sold: 453, price: 129.99 },
@@ -15,7 +15,7 @@ export function BestSellers() {
     <Card className="col-span-1 lg:col-span-2">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-base font-semibold">Best Sellers</CardTitle>
-        <Link href="/products">
+        <Link to="/products">
           <Button variant="outline" size="sm" className="gap-1 text-xs">
             View all <ChevronRight className="h-3 w-3" />
           </Button>

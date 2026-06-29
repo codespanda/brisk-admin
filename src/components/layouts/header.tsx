@@ -1,6 +1,5 @@
-"use client"
-
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Bell, Menu, Search, LogOut, User, Settings, Store, ShoppingCart, AlertTriangle, CheckCircle, XCircle, Info } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,7 +14,6 @@ import { useSidebarStore } from '@/stores/sidebar-store'
 import { useNotificationStore } from '@/stores/notification-store'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { formatRelativeDate, cn } from '@/lib/utils'
-import { useRouter } from 'next/navigation'
 import type { Notification } from '@/types'
 
 const notificationIcons: Record<Notification['type'], { icon: typeof Info; className: string }> = {
@@ -29,7 +27,7 @@ export function Header() {
   const { setMobileOpen } = useSidebarStore()
   const { notifications, unreadCount, markAllRead, markRead } = useNotificationStore()
   const isDesktop = useMediaQuery('(min-width: 1024px)')
-  const router = useRouter()
+  const navigate = useNavigate()
   const [notifOpen, setNotifOpen] = useState(false)
 
   return (
@@ -115,7 +113,7 @@ export function Header() {
                 className="w-full text-sm text-primary hover:text-primary"
                 onClick={() => {
                   setNotifOpen(false)
-                  router.push('/notifications')
+                  navigate('/notifications')
                 }}
               >
                 View All Notifications
@@ -140,14 +138,14 @@ export function Header() {
               <p className="text-xs text-muted-foreground leading-tight">Brand</p>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem onClick={() => router.push('/settings')}>
+              <DropdownMenuItem onClick={() => navigate('/settings')}>
                 <User className="mr-2 h-4 w-4" />Profile
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => router.push('/settings')}>
+              <DropdownMenuItem onClick={() => navigate('/settings')}>
                 <Settings className="mr-2 h-4 w-4" />Settings
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => router.push('/login')}>
+              <DropdownMenuItem onClick={() => navigate('/login')}>
                 <LogOut className="mr-2 h-4 w-4" />Log out
               </DropdownMenuItem>
             </DropdownMenuContent>

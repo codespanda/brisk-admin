@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import {
   ResponsiveContainer, BarChart as RechartsBarChart,
   Bar, XAxis, YAxis, CartesianGrid, Tooltip,

@@ -1,12 +1,9 @@
-"use client"
-
-import { usePathname } from 'next/navigation'
-import Link from 'next/link'
+import { useLocation, Link } from 'react-router-dom'
 import { ChevronRight, Home } from 'lucide-react'
 import { Fragment } from 'react'
 
 export function AppBreadcrumbs() {
-  const pathname = usePathname()
+  const { pathname } = useLocation()
   const segments = pathname.split('/').filter(Boolean)
 
   if (segments.length === 0) return null
@@ -22,7 +19,7 @@ export function AppBreadcrumbs() {
 
   return (
     <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-4">
-      <Link href="/" className="hover:text-foreground transition-colors">
+      <Link to="/" className="hover:text-foreground transition-colors">
         <Home className="h-4 w-4" />
       </Link>
       {crumbs.map((crumb, index) => (
@@ -31,7 +28,7 @@ export function AppBreadcrumbs() {
           {index === crumbs.length - 1 ? (
             <span className="font-medium text-foreground">{crumb.label}</span>
           ) : (
-            <Link href={crumb.href} className="hover:text-foreground transition-colors">
+            <Link to={crumb.href} className="hover:text-foreground transition-colors">
               {crumb.label}
             </Link>
           )}

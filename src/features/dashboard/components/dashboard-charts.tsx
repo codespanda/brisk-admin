@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { ChartCard } from '@/components/shared/chart-card'
 import { LineChart } from '@/components/charts/line-chart'
 import { BarChart } from '@/components/charts/bar-chart'

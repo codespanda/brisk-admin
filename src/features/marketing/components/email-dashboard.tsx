@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { Mail, Eye, MousePointer } from 'lucide-react'
 import { MetricCard } from '@/components/shared/metric-card'
 import { ChartCard } from '@/components/shared/chart-card'
@@ -32,7 +31,7 @@ export function EmailDashboard({ campaigns }: EmailDashboardProps) {
   const chartData = campaigns
     .filter((c) => c.sentCount > 0)
     .map((c) => ({
-      subject: c.subject.length > 20 ? c.subject.slice(0, 20) + '…' : c.subject,
+      subject: c.subject.length > 20 ? c.subject.slice(0, 20) + 'â€¦' : c.subject,
       sent: c.sentCount,
       opened: c.openCount,
       clicked: c.clickCount,

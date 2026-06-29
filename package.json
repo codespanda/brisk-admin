@@ -1,11 +1,12 @@
 {
-  "name": "ecommerce-admin",
+  "name": "brisk-admin",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint"
   },
   "dependencies": {
@@ -16,13 +17,13 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "date-fns": "^4.4.0",
-    "lucide-react": "^1.21.0",
-    "next": "16.2.9",
+    "lucide-react": "^1.22.0",
     "next-themes": "^0.4.6",
     "react": "19.2.4",
     "react-day-picker": "^10.0.1",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.79.0",
+    "react-router-dom": "^7.6.3",
     "recharts": "^3.8.1",
     "shadcn": "^4.11.0",
     "shadcn-ui": "^0.9.5",
@@ -35,12 +36,14 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/vite": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.5.2",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^6.3.5"
   }
 }

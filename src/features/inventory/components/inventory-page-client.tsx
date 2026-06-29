@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import { useState } from 'react'
 import { PageHeader } from '@/components/shared/page-header'
 import { Card, CardContent } from '@/components/ui/card'

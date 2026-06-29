@@ -1,5 +1,3 @@
-"use client"
-
 import { createContext, useContext, useState } from 'react'
 import type { ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -15,8 +13,7 @@ import { orderStatusMap, paymentStatusMap } from '@/constants/status-maps'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import type { Order } from '@/types'
 import { MoreVertical, Pencil, Trash2, Eye } from 'lucide-react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { Link, useNavigate } from 'react-router-dom'
 
 interface OrderColumnCallbacks {
   onEdit?: (order: Order) => void
@@ -28,7 +25,7 @@ export const OrderActionsContext = createContext<OrderColumnCallbacks>({})
 function OrderActions({ order }: { order: Order }) {
   const { onEdit, onDelete } = useContext(OrderActionsContext)
   const [open, setOpen] = useState(false)
-  const router = useRouter()
+  const navigate = useNavigate()
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
@@ -38,7 +35,7 @@ function OrderActions({ order }: { order: Order }) {
       <DropdownMenuContent align="end">
         <DropdownMenuItem
           closeOnClick
-          onClick={() => { setOpen(false); setTimeout(() => router.push(`/orders/${order.id}`), 0) }}
+          onClick={() => { setOpen(false); setTimeout(() => navigate(`/orders/${order.id}`), 0) }}
         >
           <Eye className="h-4 w-4" />
           View Details
@@ -89,7 +86,7 @@ export const orderColumns: ColumnDef<Order>[] = [
     header: 'Order #',
     cell: ({ row }) => (
       <Link
-        href={`/orders/${row.original.id}`}
+        to={`/orders/${row.original.id}`}
         className="font-medium hover:underline"
       >
         {row.original.orderNumber}

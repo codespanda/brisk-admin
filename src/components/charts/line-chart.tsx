@@ -1,5 +1,4 @@
-"use client"
-
+﻿
 import {
   ResponsiveContainer, LineChart as RechartsLineChart,
   Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
