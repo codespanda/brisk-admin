@@ -174,9 +174,34 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.75 0.01 285 / 0.4) transparent;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  .dark * {
+    scrollbar-color: oklch(0.45 0.01 285 / 0.5) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.75 0.01 285 / 0.4);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.6 0.01 285 / 0.6);
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: oklch(0.45 0.01 285 / 0.5);
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.55 0.01 285 / 0.7);
   }
 }
