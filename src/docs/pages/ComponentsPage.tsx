@@ -117,8 +117,15 @@ export function ComponentsPage() {
       </UL>
 
       <Callout type="tip">
-        Visit <Code>/resources/components</Code> in the running app to see all components rendered
-        interactively.
+        See all components rendered interactively →{' '}
+        <a
+          href="https://codespanda.github.io/brisk-admin/resources/components"
+          target="_blank"
+          rel="noreferrer"
+          className="font-medium underline underline-offset-2"
+        >
+          /resources/components
+        </a>
       </Callout>
     </div>
   )
