@@ -78,8 +78,10 @@ function useDocsTheme(): [boolean, () => void] {
 function useActiveSection(ids: string[]): string {
   const [active, setActive] = useState(ids[0])
   useEffect(() => {
+    const scroller = document.querySelector('.brisk-docs') as HTMLElement | null
+    if (!scroller) return
     const handleScroll = () => {
-      const threshold = window.innerHeight * 0.25
+      const threshold = scroller.getBoundingClientRect().top + scroller.clientHeight * 0.25
       let current = ids[0]
       for (const id of ids) {
         const el = document.getElementById(id)
@@ -89,9 +91,9 @@ function useActiveSection(ids: string[]): string {
       }
       setActive(current)
     }
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    scroller.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => scroller.removeEventListener('scroll', handleScroll)
   }, [ids])
   return active
 }
