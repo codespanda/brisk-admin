@@ -1,8 +1,16 @@
+import { Suspense, lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Providers } from '@/providers'
 import { DashboardLayout } from '@/layouts/DashboardLayout'
 import { AuthLayout } from '@/layouts/AuthLayout'
-import { DocsApp } from '@/docs'
+
+// ─── DOCS (optional, self-contained — safe to delete) ──────────────
+// Template documentation. To remove:
+//   1. delete `src/docs/`
+//   2. remove this import block + the two DOCS routes below
+//   3. change <Route index> to redirect to "/dashboard" instead
+const DocsPage = lazy(() => import('@/docs/DocsPage'))
+// ───────────────────────────────────────────────────────────────────
 
 import DashboardPage from '@/pages/DashboardPage'
 import ProductsPage from '@/pages/ProductsPage'
@@ -42,11 +50,12 @@ export default function App() {
   return (
     <Providers>
       <Routes>
-        {/* Default route → docs */}
-        <Route index element={<Navigate to="/docs" replace />} />
-
-        {/* Docs (standalone — safe to delete src/docs/ and remove these two lines) */}
-        <Route path="/docs/*" element={<DocsApp />} />
+        {/* DOCS: root serves the template documentation.
+            To restore the app default, replace these with:
+            <Route index element={<Navigate to="/dashboard" replace />} /> */}
+        <Route index element={<Suspense fallback={null}><DocsPage /></Suspense>} />
+        {/* DOCS (optional — delete src/docs folder + this line to remove) */}
+        <Route path="/docs" element={<Suspense fallback={null}><DocsPage /></Suspense>} />
 
         {/* Auth routes */}
         <Route element={<AuthLayout />}>
