@@ -20,7 +20,7 @@ export function GettingStartedPage() {
       <H2>Installation</H2>
 
       <H3>1. Clone the repository</H3>
-      <CodeBlock>{`git clone https://github.com/your-org/brisk-admin.git
+      <CodeBlock>{`git clone https://github.com/codespanda/brisk-admin.git
 cd brisk-admin`}</CodeBlock>
 
       <H3>2. Install dependencies</H3>

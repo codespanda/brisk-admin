@@ -9,17 +9,20 @@ import {
   Palette,
   Shield,
   Zap,
+  ExternalLink,
 } from 'lucide-react'
 
+const BASE = 'https://codespanda.github.io/brisk-admin'
+
 const features = [
-  { icon: LayoutDashboard, label: 'Dashboard', desc: 'KPIs, charts, activity feed' },
-  { icon: Package, label: 'Products', desc: 'CRUD, variants, media' },
-  { icon: ShoppingCart, label: 'Orders', desc: 'Lifecycle, timeline, fulfillment' },
-  { icon: Users, label: 'Customers', desc: 'Profiles, history, segments' },
-  { icon: BarChart3, label: 'Analytics', desc: 'Sales, products, customers' },
-  { icon: Palette, label: 'Theming', desc: 'Light / dark, CSS variables' },
-  { icon: Shield, label: 'Auth Pages', desc: 'Login, register, reset flow' },
-  { icon: Zap, label: 'Fast & Typed', desc: 'Vite + React + TypeScript' },
+  { icon: LayoutDashboard, label: 'Dashboard', desc: 'KPIs, charts, activity feed', href: `${BASE}/dashboard` },
+  { icon: Package, label: 'Products', desc: 'CRUD, variants, media', href: `${BASE}/products` },
+  { icon: ShoppingCart, label: 'Orders', desc: 'Lifecycle, timeline, fulfillment', href: `${BASE}/orders` },
+  { icon: Users, label: 'Customers', desc: 'Profiles, history, segments', href: `${BASE}/customers` },
+  { icon: BarChart3, label: 'Analytics', desc: 'Sales, products, customers', href: `${BASE}/analytics` },
+  { icon: Palette, label: 'Theming', desc: 'Light / dark, CSS variables', href: `${BASE}/resources/components` },
+  { icon: Shield, label: 'Auth Pages', desc: 'Login, register, reset flow', href: `${BASE}/login` },
+  { icon: Zap, label: 'Components', desc: 'Full component gallery', href: `${BASE}/resources/components` },
 ]
 
 export function IntroductionPage() {
@@ -30,6 +33,23 @@ export function IntroductionPage() {
         A modern, fully-typed React admin dashboard template built with Vite, Tailwind CSS, and
         shadcn/ui components.
       </Lead>
+
+      {/* Live demo banner */}
+      <div className="mb-8 flex items-center justify-between gap-4 rounded-lg border border-primary/30 bg-primary/5 px-4 py-3">
+        <div>
+          <p className="text-sm font-semibold text-foreground">Live Demo</p>
+          <p className="text-xs text-muted-foreground">Deployed on GitHub Pages</p>
+        </div>
+        <a
+          href={BASE}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          Open App
+          <ExternalLink className="h-3.5 w-3.5" />
+        </a>
+      </div>
 
       <Callout type="tip">
         New here? Jump to{' '}
@@ -52,17 +72,20 @@ export function IntroductionPage() {
 
       <H2>Features at a Glance</H2>
       <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {features.map(({ icon: Icon, label, desc }) => (
-          <div
+        {features.map(({ icon: Icon, label, desc, href }) => (
+          <a
             key={label}
-            className="flex flex-col gap-1.5 rounded-lg border border-border p-3.5"
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className="flex flex-col gap-1.5 rounded-lg border border-border p-3.5 transition-colors hover:border-primary/50 hover:bg-muted/50"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10">
               <Icon className="h-4 w-4 text-primary" />
             </div>
             <span className="text-sm font-semibold text-foreground">{label}</span>
             <span className="text-xs text-muted-foreground">{desc}</span>
-          </div>
+          </a>
         ))}
       </div>
 

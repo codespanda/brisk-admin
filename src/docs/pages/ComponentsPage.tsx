@@ -117,15 +117,24 @@ export function ComponentsPage() {
       </UL>
 
       <Callout type="tip">
-        See all components rendered interactively →{' '}
-        <a
-          href="https://codespanda.github.io/brisk-admin/resources/components"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium underline underline-offset-2"
-        >
-          /resources/components
-        </a>
+        See all components, forms, and charts rendered interactively on the live app:{' '}
+        {[
+          ['/resources/components', 'Components'],
+          ['/resources/forms', 'Forms'],
+          ['/resources/charts', 'Charts'],
+        ].map(([path, label], i, arr) => (
+          <span key={path}>
+            <a
+              href={`https://codespanda.github.io/brisk-admin${path}`}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-2"
+            >
+              {label}
+            </a>
+            {i < arr.length - 1 && ' · '}
+          </span>
+        ))}
       </Callout>
     </div>
   )
