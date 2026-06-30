@@ -124,6 +124,10 @@ export default function DocsPage() {
                     key={i.id}
                     href={`#${i.id}`}
                     className={active === i.id ? 'is-active' : ''}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      document.getElementById(i.id)?.scrollIntoView({ behavior: 'smooth' })
+                    }}
                   >
                     {i.label}
                   </a>
@@ -179,7 +183,11 @@ export default function DocsPage() {
                 Open the live dashboard
                 <ArrowUpRight size={16} />
               </a>
-              <a className="brisk-docs__btn" href="#quick-start">
+              <a
+                className="brisk-docs__btn"
+                href="#quick-start"
+                onClick={(e) => { e.preventDefault(); document.getElementById('quick-start')?.scrollIntoView({ behavior: 'smooth' }) }}
+              >
                 Read the quick start
                 <ArrowRight size={16} />
               </a>
@@ -562,7 +570,11 @@ function ProductForm() {
 
           <footer className="brisk-docs__footer">
             <span>Brisk Admin · React + Vite template</span>
-            <a href="#overview" className="brisk-docs__toplink">
+            <a
+              href="#overview"
+              className="brisk-docs__toplink"
+              onClick={(e) => { e.preventDefault(); document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' }) }}
+            >
               Back to top
               <ArrowUp size={14} />
             </a>
