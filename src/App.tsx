@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { Providers } from '@/providers'
 import { DashboardLayout } from '@/layouts/DashboardLayout'
 import { AuthLayout } from '@/layouts/AuthLayout'
+import { DocsApp } from '@/docs'
 
 import DashboardPage from '@/pages/DashboardPage'
 import ProductsPage from '@/pages/ProductsPage'
@@ -41,6 +42,12 @@ export default function App() {
   return (
     <Providers>
       <Routes>
+        {/* Default route → docs */}
+        <Route index element={<Navigate to="/docs" replace />} />
+
+        {/* Docs (standalone — safe to delete src/docs/ and remove these two lines) */}
+        <Route path="/docs/*" element={<DocsApp />} />
+
         {/* Auth routes */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<LoginPage />} />
@@ -52,8 +59,7 @@ export default function App() {
 
         {/* Dashboard routes */}
         <Route element={<DashboardLayout />}>
-          <Route index element={<DashboardPage />} />
-          <Route path="/" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/new" element={<NewProductPage />} />
           <Route path="/products/:id/edit" element={<EditProductPage />} />
