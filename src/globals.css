@@ -143,7 +143,7 @@
   --success-foreground: oklch(0.98 0.01 160);
 
   --warning: oklch(0.82 0.15 85);
-  --warning-foreground: oklch(0.2 0.05 85);
+  --warning-foreground: oklch(0.93 0.12 85);
 
   --info: oklch(0.72 0.13 210);
   --info-foreground: oklch(0.95 0.02 210);
