@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Bell, Menu, Search, LogOut, User, Settings, Store, ShoppingCart, AlertTriangle, CheckCircle, XCircle, Info } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import { Bell, Menu, Search, LogOut, User, Settings, Store, AlertTriangle, CheckCircle, XCircle, Info, Sun, Moon, Monitor } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -29,6 +30,7 @@ export function Header() {
   const isDesktop = useMediaQuery('(min-width: 1024px)')
   const navigate = useNavigate()
   const [notifOpen, setNotifOpen] = useState(false)
+  const { setTheme } = useTheme()
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 lg:px-6">
@@ -121,6 +123,25 @@ export function Header() {
             </div>
           </PopoverContent>
         </Popover>
+
+        {/* Theme toggle */}
+        <DropdownMenu>
+          <DropdownMenuTrigger className="inline-flex items-center justify-center rounded-full h-9 w-9 text-sm transition-colors hover:bg-muted focus-visible:outline-none">
+            <Sun className="h-[18px] w-[18px] text-muted-foreground rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-[18px] w-[18px] text-muted-foreground rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => setTheme('light')}>
+              <Sun className="mr-2 h-4 w-4" />Light
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme('dark')}>
+              <Moon className="mr-2 h-4 w-4" />Dark
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setTheme('system')}>
+              <Monitor className="mr-2 h-4 w-4" />System
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         {/* Divider */}
         <div className="hidden h-6 w-px bg-border lg:block" />
