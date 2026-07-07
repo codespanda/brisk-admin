@@ -338,7 +338,7 @@ export default function DocsPage() {
               dangerouslySetInnerHTML={{
                 __html: `src/
 ├─ App.tsx              <span class="c"># route table</span>
-├─ main.tsx             <span class="c"># app entry (HashRouter)</span>
+├─ main.tsx             <span class="c"># app entry (BrowserRouter)</span>
 ├─ pages/               <span class="c"># route-level page components</span>
 ├─ components/
 │  ├─ ui/               <span class="c"># shadcn primitives (Button, Card…)</span>
