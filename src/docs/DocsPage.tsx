@@ -34,7 +34,7 @@ import {
 import { CodeBlock } from './CodeBlock'
 import './docs.css'
 
-const BASE = 'https://codespanda.github.io/brisk-admin/#'
+const BASE = 'https://brisk.codespanda.com'
 
 const NAV = [
   {
@@ -103,7 +103,7 @@ export default function DocsPage() {
   const allIds = NAV.flatMap((g) => g.items.map((i) => i.id))
   const active = useActiveSection(allIds)
 
-  const dashboardHref = `${import.meta.env.BASE_URL}#/dashboard`
+  const dashboardHref = `${import.meta.env.BASE_URL}dashboard`
 
   return (
     <div className={`brisk-docs${dark ? ' dark' : ''}`}>
