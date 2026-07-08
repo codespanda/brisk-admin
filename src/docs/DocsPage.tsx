@@ -103,8 +103,6 @@ export default function DocsPage() {
   const allIds = NAV.flatMap((g) => g.items.map((i) => i.id))
   const active = useActiveSection(allIds)
 
-  const dashboardHref = `${import.meta.env.BASE_URL}dashboard`
-
   return (
     <div className={`brisk-docs${dark ? ' dark' : ''}`}>
       <div className="brisk-docs__shell">
@@ -150,7 +148,7 @@ export default function DocsPage() {
               </button>
               <a
                 className="brisk-docs__btn brisk-docs__btn--primary"
-                href={dashboardHref}
+                href={`${BASE}/dashboard`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
